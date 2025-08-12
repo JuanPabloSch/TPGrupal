@@ -96,10 +96,11 @@
             </div>
         </div>
     </div>
-    <!-- Contacto -->
+<!-- Contacto -->
     <div class=" bg-secondary mb-3 text-center">
         <hr>
         <h2>Formulario de Contacto</h2>
+        <form id="form">
         <label for="nombre" class="form-label"> Nombre </label>
         <input type="text" class="form-control w-50 mx-auto" id="nombre" placeholder="Tu nombre">
         <div class="mb-3 text-center">
@@ -110,17 +111,29 @@
             <label for="textarea" class="form-label"> Mensaje </label>
             <textarea class="form-control w-50 mx-auto" id="textarea" rows="3"></textarea>
         </div>
+        </form>
         <!-- Botón modal contacto -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-        data-bs-target="#modalContacto">Enviar
+        <button type="button" class="btn btn-primary"  id="Enviarr">Enviar
         </button>
+                <script>
+            document.getElementById('Enviarr').addEventListener('click', function() {
+                if (document.getElementById('nombre').value.trim() === '' || 
+                    document.getElementById('email').value.trim() === '' || 
+                    document.getElementById('textarea').value.trim() === '') {
+                    alert('Complete los campos vacíos');
+                } else {
+                    const modal = new bootstrap.Modal(document.getElementById('modalContacto'));
+                    modal.show();;
+                }
+            });
+        </script>
         <!-- Modal Contacto -->
         <div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content justify-content-center">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5 text-center w-100" id="modalContactoLabel">Mensaje enviado</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         </button>
                     </div>
                     <div class="modal-body text-center">
