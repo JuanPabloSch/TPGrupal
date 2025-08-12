@@ -57,6 +57,7 @@
             </div>
             <!--Validacion de campos vacios-->
                 <script>
+                    //Validacion campos  vacios
             document.getElementById('ValIngeso').addEventListener('click', function() {
                 if (document.getElementById('usuario').value.trim() === '' || 
                     document.getElementById('contrasena').value.trim() === '') {
@@ -119,6 +120,8 @@
             <label for="email" class="form-label"> Email </label>
             <input type="email" class="form-control w-50 mx-auto" id="email" placeholder="Tu@correo.com">
         </div>
+        <div id="error-email" class="text-danger mt-1"></div>
+
         <div class="mb-3 text-center">
             <label for="textarea" class="form-label"> Mensaje </label>
             <textarea class="form-control w-50 mx-auto" id="textarea" rows="3"></textarea>
@@ -127,19 +130,40 @@
         <!-- Botón modal contacto -->
         <button type="button" class="btn btn-primary"  id="Enviarr">Enviar
         </button>
-        <!--Validacion de form vacios-->
-                <script>
-            document.getElementById('Enviarr').addEventListener('click', function() {
-                if (document.getElementById('nombre').value.trim() === '' || 
-                    document.getElementById('email').value.trim() === '' || 
-                    document.getElementById('textarea').value.trim() === '') {
-                    alert('Complete los campos vacíos');
-                } else {
-                    const modal = new bootstrap.Modal(document.getElementById('modalContacto'));
-                    modal.show();;
-                }
-            });
-        </script>
+<script>
+document.getElementById('Enviarr').addEventListener('click', function () {
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mensaje = document.getElementById('textarea').value.trim();
+    let formularioValido = true;
+
+    // Limpiar errores anteriores
+    document.getElementById('error-email').textContent = "";
+
+    // Validar campos vacíos
+    if (nombre === '' || email === '' || mensaje === '') {
+        alert('Complete los campos vacíos');
+        formularioValido = false;
+    }
+
+    // Validar formato de email solo si el campo no está vacío
+    if (email !== '') {
+        const regexEmail = /^\S+@\S+\.\S+$/;
+        if (!regexEmail.test(email)) {
+            formularioValido = false;
+            document.getElementById('error-email').textContent = "Formato de email no válido";
+        }
+    }
+
+    // Si todo está bien, mostrar el modal (simulado)
+    if (formularioValido) {
+        // Asegurate de tener el modalContacto en tu HTML, o cambialo si se llama distinto
+        const modal = new bootstrap.Modal(document.getElementById('modalContacto'));
+        modal.show();
+    }
+});
+</script>
+
         <!-- Modal Contacto -->
         <div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
             <div class="modal-dialog">
