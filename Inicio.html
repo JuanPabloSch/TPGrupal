@@ -36,7 +36,7 @@
                                         <h1 class="modal-title fs-5 text-center w-100" id="modalCampusLabel">Acceso al Campus</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body bg-light">
+                                    <div class="modal-body bg-light" >
                                         <div class="mb-3">
                                             <label for="usuario" class="form-label">Usuario</label>
                                             <input type="text" class="form-control" id="usuario" placeholder="Ingresá tu usuario">
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-center bg-light">
-                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Ingresar</button>
+                                    <button type="submit" class="btn btn-primary" id="ValIngeso" data-bs-dismiss="modal">Ingresar</button>
                                     </div>
                                 </div>
                             </div>
@@ -55,6 +55,18 @@
                     </div>
                 </div>
             </div>
+            <!--Validacion de campos vacios-->
+                <script>
+            document.getElementById('ValIngeso').addEventListener('click', function() {
+                if (document.getElementById('usuario').value.trim() === '' || 
+                    document.getElementById('contrasena').value.trim() === '') {
+                    alert('Complete los campos vacíos');
+                } else {
+                    const modal = new bootstrap.Modal(document.getElementById('modalCampus'));
+                    modal.show();;
+                }
+            });
+        </script>
             <!-- Card Carreras -->
             <div class="col-md-4 d-flex justify-content-center mb-4">
                 <div class="card" style="width: 18rem;">
@@ -115,6 +127,7 @@
         <!-- Botón modal contacto -->
         <button type="button" class="btn btn-primary"  id="Enviarr">Enviar
         </button>
+        <!--Validacion de form vacios-->
                 <script>
             document.getElementById('Enviarr').addEventListener('click', function() {
                 if (document.getElementById('nombre').value.trim() === '' || 
