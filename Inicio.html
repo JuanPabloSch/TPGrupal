@@ -18,17 +18,68 @@
     <!-- Contenedor cards -->
     <div class="bg-light bcontainer">
         <div class="row justify-content-center">
-    <!-- Card planes de pago -->
+    <!-- Card Campus -->
             <div class="col-md-4 d-flex justify-content-center mb-4">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body text-center d-flex flex-column align-items-center">
-                        <h5 class="card-title">Registrar Plan de Pagos</h5>
-                        <p class="card-text">En esta sección podrá registrar un nuevo plan de pago para el alumno.</p>
+                        <h5 class="card-title">Campus Virtual</h5>
+                        <p class="card-text">Ingresa con tu usuario y contraseña para acceder a tus cursos y materiales.</p>
+                        <!-- Boton Modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#modalCampus">Acceder
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalCampus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCampusLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary">
+                                        <h1 class="modal-title fs-5 text-center w-100" id="modalCampusLabel">Acceso al Campus</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body bg-light">
+                                        <div class="mb-3">
+                                            <label for="usuario" class="form-label">Usuario</label>
+                                            <input type="text" class="form-control" id="usuario" placeholder="Ingresá tu usuario">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contrasena" class="form-label">Contraseña</label>
+                                            <input type="password" class="form-control" id="contrasena" placeholder="Ingresá tu contraseña">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center bg-light">
+                                    <button type="button" class="btn btn-primary" id="ValIngreso" data-bs-dismiss="modal">Ingresar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Validacion de campos vacios-->
+                <script>
+                    //Validacion campos  vacios
+            document.getElementById('ValIngreso').addEventListener('click', function() {
+    if (document.getElementById('usuario').value.trim() === '' || 
+        document.getElementById('contrasena').value.trim() === '') {
+        alert('Complete los campos vacíos');
+    } else {
+        const modal = new bootstrap.Modal(document.getElementById('modalCampus'));
+        modal.show();
+    }
+});
+
+        </script>
+            <!-- Card planes de pago -->
+            <div class="col-md-4 d-flex justify-content-center mb-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body text-center d-flex flex-column align-items-center">
+                        <h5 class="card-title">Planes de Pagos</h5>
+                        <p class="card-text">En esta sección podrá simular o registrar un nuevo plan de pago para el alumno.</p>
                         <!-- Boton Modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#modalPago">Acceder
                         </button>
-                        <!-- Modal -->
+                        <!-- Modal Planes -->
                         <div class="modal fade" id="modalPago" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -60,14 +111,6 @@
                                             <label for="importe" class="form-label">Importe por cuota</label>
                                             <input type="text" class="form-control" id="importe" placeholder="Simulá tu cuota" readonly>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="usuario" class="form-label">Usuario</label>
-                                            <input type="text" class="form-control" id="usuario" placeholder="Ingresá tu usuario">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="contrasena" class="form-label">Contraseña</label>
-                                            <input type="password" class="form-control" id="contrasena" placeholder="Ingresá tu contraseña">
-                                        </div>
                                     </div>
                                     <div class="modal-footer justify-content-center bg-light">
                                     <button type="submit" class="btn btn-primary" id="ValIngeso" data-bs-dismiss="modal">Registrar Plan</button>
@@ -78,60 +121,6 @@
                     </div>
                 </div>
             </div>
-            <!--Validacion de campos vacios-->
-                <script>
-                    //Validacion campos  vacios
-            document.getElementById('ValIngeso').addEventListener('click', function() {
-                if (document.getElementById('usuario').value.trim() === '' || 
-                    document.getElementById('contrasena').value.trim() === '') {
-                    alert('Complete los campos vacíos');
-                } else {
-                    const modal = new bootstrap.Modal(document.getElementById('modalPago'));
-                    modal.show();;
-                }
-            });
-        </script>
-            <!-- Card Carreras -->
-            <div class="col-md-4 d-flex justify-content-center mb-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body text-center d-flex flex-column align-items-center">
-                        <h5 class="card-title">Nuestras Carreras</h5>
-                        <p class="card-text">Conocé las carreras que ofrecemos, sus planes de estudio, modalidades de cursado.</p>
-                        <!-- Boton Carreras -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCarreras">Ver Carreras
-                        </button>
-                        <!-- Modal Carreras -->
-                        <div class="modal fade" id="modalCarreras" tabindex="-1" aria-labelledby="modalCarrerasLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-primary">
-                                        <h1 class="modal-title fs-5 text-center w-100" id="modalCarrerasLabel">Nuestras Carreras</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        </button>
-                                    </div>
-                                    <div class="modal-body bg-light">
-                                        <div class="offcanvas-body">
-                                            <ul>
-                                                <li>Profesorado de Educación Especial</li>
-                                                <li>Profesorado de Educación Física</li>
-                                                <li>Profesorado de Inglés</li>
-                                                <li>Profesorado de Educación Inicial</li>
-                                                <li>Psicopedagogía</li>
-                                                <li>Tecnicatura Superior en Análisis de Sistemas Informáticos</li>
-                                            </ul>
-                                        </div>
-                                        </div>
-                                    <div class="modal-footer justify-content-center bg-light">
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 <!-- Contacto -->
     <div class=" bg-secondary mb-3 text-center">
         <hr>
