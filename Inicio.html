@@ -18,25 +18,48 @@
     <!-- Contenedor cards -->
     <div class="bg-light bcontainer">
         <div class="row justify-content-center">
-    <!-- Card Campus -->
+    <!-- Card planes de pago -->
             <div class="col-md-4 d-flex justify-content-center mb-4">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body text-center d-flex flex-column align-items-center">
-                        <h5 class="card-title">Campus Virtual</h5>
-                        <p class="card-text">Ingresa con tu usuario y contraseña para acceder a tus cursos y materiales.</p>
+                        <h5 class="card-title">Registrar Plan de Pagos</h5>
+                        <p class="card-text">En esta sección podrá registrar un nuevo plan de pago para el alumno.</p>
                         <!-- Boton Modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#modalCampus">Acceder
+                            data-bs-target="#modalPago">Acceder
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="modalCampus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCampusLabel" aria-hidden="true">
+                        <div class="modal fade" id="modalPago" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header bg-primary">
-                                        <h1 class="modal-title fs-5 text-center w-100" id="modalCampusLabel">Acceso al Campus</h1>
+                                        <h1 class="modal-title fs-5 text-center w-100" id="modalPagoLabel">Planes de Pago</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body bg-light" >
+                                        <div class="mb-3">
+                                            <label for="carrera" class="form-label">Carrera</label>
+                                            <input type="text" class="form-control" id="carrera" placeholder="Elegí tu carrera">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="cohorte" class="form-label">Año de ingreso</label>
+                                            <input type="text" class="form-control" id="cohorte" placeholder="Año de ingreso">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="modalidad" class="form-label">Modalidad</label>
+                                            <input type="text" class="form-control" id="modalidad" placeholder="Elegí tu modalidad de cursado">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="cuotas" class="form-label">Cantidad de cuotas</label>
+                                            <input type="text" class="form-control" id="cuotas" placeholder="Elegí cantidad de cuotas">
+                                        </div>
+                                        <div class="modal-footer justify-content-center bg-light">
+                                    <button type="submit" class="btn btn-primary" id="ValIngeso" data-bs-dismiss="modal">Simular cuota</button>
+                                    </div>
+                                        <div class="mb-3">
+                                            <label for="importe" class="form-label">Importe por cuota</label>
+                                            <input type="text" class="form-control" id="importe" placeholder="Simulá tu cuota" readonly>
+                                        </div>
                                         <div class="mb-3">
                                             <label for="usuario" class="form-label">Usuario</label>
                                             <input type="text" class="form-control" id="usuario" placeholder="Ingresá tu usuario">
@@ -47,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-center bg-light">
-                                    <button type="submit" class="btn btn-primary" id="ValIngeso" data-bs-dismiss="modal">Ingresar</button>
+                                    <button type="submit" class="btn btn-primary" id="ValIngeso" data-bs-dismiss="modal">Registrar Plan</button>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +86,7 @@
                     document.getElementById('contrasena').value.trim() === '') {
                     alert('Complete los campos vacíos');
                 } else {
-                    const modal = new bootstrap.Modal(document.getElementById('modalCampus'));
+                    const modal = new bootstrap.Modal(document.getElementById('modalPago'));
                     modal.show();;
                 }
             });
