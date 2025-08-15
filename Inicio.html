@@ -163,24 +163,25 @@
                         const btnObtener = document.getElementById('btnObtener');
                         const btnRegistrar = document.getElementById('btnRegistrar');
                         // Obtener cuota
-                        btnObtener.addEventListener('click', () => {
+                        btnObtener.addEventListener('click', (event) => {
                         const cuotas = parseInt(cuotasInput.value);
                         if (isNaN(cuotas) || cuotas < 1 || cuotas > 12) {
+                            event.preventDefault(); // Evita el envío del formulario
                             errorCuotas.textContent = 'Debe ingresar un número válido entre 1 y 12';
                             importeInput.value = '';
                             btnRegistrar.disabled = true;
-                        return;
+                            return;
                         }
-                        errorCuotas.textContent = '';
-                        const valorCarrera = 1000000;
-                        const importe = valorCarrera / cuotas;
-                        importeInput.value = importe.toFixed(2);
-                        btnRegistrar.disabled = false;
-                    });
-                    // Registrar plan
-                    btnRegistrar.addEventListener('click', () => {
+                            errorCuotas.textContent = '';
+                            const valorCarrera = 1000000;
+                            const importe = valorCarrera / cuotas;
+                            importeInput.value = importe.toFixed(2);
+                            btnRegistrar.disabled = false;
+                        });
+                        // Registrar plan
+                        btnRegistrar.addEventListener('click', () => {
                         alert('Plan registrado');
-                    });
+                        });
                     </script>
                     </div>
                 </div>
