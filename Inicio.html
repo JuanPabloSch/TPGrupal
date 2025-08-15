@@ -12,20 +12,16 @@
     <!-- Encabezado -->
     <header>
         <nav id="navbar">
-
             <div class="navlista1">
-            <a href="#"><img src="logoISDM.png" alt="logo" id="logonav"></a>
-            <ul>
-                <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="#">Planes disponibles</a></li>
-                <li><a href="#">Mis pagos</a></li>
-            </ul>
+                <a href="#"><img src="img/logoISDM.png" alt="logo" id="logonav"></a>
+                <ul>
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="#">Planes disponibles</a></li>
+                    <li><a href="#">Mis pagos</a></li>
+                </ul>
             </div>
-
         </nav>
-        
     </header>
-
     <!-- Contenedor cards -->
     <div class="bg-light bcontainer">
         <div class="row justify-content-center">
@@ -58,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-center bg-light">
-                                    <button type="button" class="btn btn-primary" id="ValIngreso" data-bs-dismiss="modal">Ingresar</button>
+                                        <button type="button" class="btn btn-primary" id="ValIngreso" data-bs-dismiss="modal">Ingresar</button>
                                     </div>
                                 </div>
                             </div>
@@ -67,18 +63,18 @@
                 </div>
             </div>
             <!--Validacion de campos vacios-->
-                <script>
-                    //Validacion campos  vacios
+            <script>
+            //Validacion campos  vacios
             document.getElementById('ValIngreso').addEventListener('click', function() {
-    if (document.getElementById('usuario').value.trim() === '' || 
-        document.getElementById('contrasena').value.trim() === '') {
-        alert('Complete los campos vacíos');
-    } else {
-        const modal = new bootstrap.Modal(document.getElementById('modalCampus'));
-        modal.show();
-    }
-});
-
+            if (document.getElementById('usuario').value.trim() === '' || 
+                document.getElementById('contrasena').value.trim() === '') {
+                alert('Complete los campos vacíos');
+            } 
+            else {
+                const modal = new bootstrap.Modal(document.getElementById('modalCampus'));
+                modal.show();
+            }
+        });
         </script>
             <!-- Card planes de pago -->
             <div class="col-md-4 d-flex justify-content-center mb-4">
@@ -98,144 +94,190 @@
                                         <h1 class="modal-title fs-5 text-center w-100" id="modalPagoLabel">Planes de Pago</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body bg-light" >
+                                    <div class="modal-body bg-light">
+                                    <!-- Carrera -->
                                         <div class="mb-3">
                                             <label for="carrera" class="form-label">Carrera</label>
-                                            <input type="text" class="form-control" id="carrera" placeholder="Elegí tu carrera">
+                                            <select class="form-select" id="carrera">
+                                                <option value="">Elegí tu carrera</option>
+                                                <option>Profesorado de Educación Inicial</option>
+                                                <option>Profesorado de Educación Primaria</option>
+                                                <option>Profesorado de Inglés</option>
+                                                <option>Profesorado de Educación Especial</option>
+                                                <option>Psicopedagogía</option>
+                                                <option>Análisis de Sistemas</option>
+                                            </select>
                                         </div>
+                                        <!-- Cohorte -->
                                         <div class="mb-3">
                                             <label for="cohorte" class="form-label">Año de ingreso</label>
-                                            <input type="text" class="form-control" id="cohorte" placeholder="Año de ingreso">
+                                            <select class="form-select" id="cohorte">
+                                                <option value="">Año de ingreso</option>
+                                                <option>2018</option>
+                                                <option>2019</option>
+                                                <option>2020</option>
+                                                <option>2021</option>
+                                                <option>2022</option>
+                                                <option>2023</option>
+                                                <option>2024</option>
+                                                <option>2025</option>
+                                            </select>
                                         </div>
+                                        <!-- Modalidad -->
                                         <div class="mb-3">
                                             <label for="modalidad" class="form-label">Modalidad</label>
-                                            <input type="text" class="form-control" id="modalidad" placeholder="Elegí tu modalidad de cursado">
+                                            <select class="form-select" id="modalidad">
+                                                <option value="">Elegí tu modalidad</option>
+                                                <option>Presencial</option>
+                                                <option>Virtual</option>
+                                            </select>
                                         </div>
+                                        <!-- Cantidad de cuotas -->
                                         <div class="mb-3">
                                             <label for="cuotas" class="form-label">Cantidad de cuotas</label>
-                                            <input type="text" class="form-control" id="cuotas" placeholder="Elegí cantidad de cuotas">
+                                            <input type="text" class="form-control" id="cuotas" placeholder="Elegí entre 1 y 12 cuotas">
+                                            <div class="text-danger small mt-1" id="errorCuotas">
+                                            </div>
                                         </div>
+                                        <!-- Botón obtener cuota -->
                                         <div class="modal-footer justify-content-center bg-light">
-                                    <button type="submit" class="btn btn-primary" id="ValIngeso" data-bs-dismiss="modal">Obtener cuota</button>
-                                    </div>
+                                            <button type="button" class="btn btn-primary" id="btnObtener">Obtener cuota</button>
+                                        </div>
+                                        <!-- Importe por cuota -->
                                         <div class="mb-3">
                                             <label for="importe" class="form-label">Importe por cuota</label>
                                             <input type="text" class="form-control" id="importe" placeholder="Tu importe" readonly>
                                         </div>
                                     </div>
+                                    <!-- Botón registrar plan -->
                                     <div class="modal-footer justify-content-center bg-light">
-                                    <button type="submit" class="btn btn-primary" id="ValIngeso" data-bs-dismiss="modal">Registrar Plan</button>
+                                        <button type="button" class="btn btn-primary" id="btnRegistrar" disabled>Registrar Plan</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    <script>
+                        const cuotasInput = document.getElementById('cuotas');
+                        const errorCuotas = document.getElementById('errorCuotas');
+                        const importeInput = document.getElementById('importe');
+                        const btnObtener = document.getElementById('btnObtener');
+                        const btnRegistrar = document.getElementById('btnRegistrar');
+                        // Obtener cuota
+                        btnObtener.addEventListener('click', () => {
+                        const cuotas = parseInt(cuotasInput.value);
+                        if (isNaN(cuotas) || cuotas < 1 || cuotas > 12) {
+                            errorCuotas.textContent = 'Debe ingresar un número válido entre 1 y 12';
+                            importeInput.value = '';
+                            btnRegistrar.disabled = true;
+                        return;
+                        }
+                        errorCuotas.textContent = '';
+                        const valorCarrera = 1000000;
+                        const importe = valorCarrera / cuotas;
+                        importeInput.value = importe.toFixed(2);
+                        btnRegistrar.disabled = false;
+                    });
+                    // Registrar plan
+                    btnRegistrar.addEventListener('click', () => {
+                        alert('Plan registrado');
+                    });
+                    </script>
                     </div>
                 </div>
             </div>
 <!-- Contacto -->
-
-    <div class="form_de_contacto">
-    <div class="mb-3 text-center" >
-        <hr>
-        <h2>Enviar un comunicado</h2>
-        <form id="form">
-        <label for="nombre" class="form-label"> Nombre </label>
-        <input type="text" class="form-control w-50 mx-auto" id="nombre" placeholder="Tu nombre">
-        <div class="mb-3 text-center">
-            <label for="email" class="form-label"> Email </label>
-            <input type="email" class="form-control w-50 mx-auto" id="email" placeholder="Tu@correo.com">
+        <div class="form_de_contacto">
+            <div class="mb-3 text-center" >
+                <hr>
+                <h2>Enviar un comunicado</h2>
+                <form id="form">
+                    <label for="nombre" class="form-label"> Nombre </label>
+                    <input type="text" class="form-control w-50 mx-auto" id="nombre" placeholder="Tu nombre">
+                    <div class="mb-3 text-center">
+                        <label for="email" class="form-label"> Email </label>
+                        <input type="email" class="form-control w-50 mx-auto" id="email" placeholder="Tu@correo.com">
+                    </div>
+                    <div id="error-email" class="text-danger mt-1">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <label class="form-label"> Telefono </label>
+                        <input type="text" class="form-control w-50 mx-auto"  >
+                    </div>
+                    <div class="form-control w-50 mx-auto">
+                        <select class="form-select" aria-label="Default select example" >
+                            <option selected>Tipo de consulta</option>
+                            <option value="1">General</option>
+                            <option value="2">Problemas con el pago</option>
+                            <option value="3">Urgente</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <label for="textarea" class="form-label"> Mensaje </label>
+                        <textarea class="form-control w-50 mx-auto" id="textarea" rows="3"></textarea>
+                    </div>
+                    <!-- Botón modal contacto -->
+                    <button type="button" class="btn btn-primary"  id="Enviarr">Enviar
+                    </button>
+                </form>
+            </div>
         </div>
-        <div id="error-email" class="text-danger mt-1"></div>
-
-        <div class="mb-3 text-center">
-            <label class="form-label"> Telefono </label>
-            <input type="text" class="form-control w-50 mx-auto"  >
-        </div>
-
-        <div class="form-control w-50 mx-auto">
-    <select class="form-select" aria-label="Default select example" >
-  <option selected>Tipo de consulta</option>
-  <option value="1">General</option>
-  <option value="2">Problemas con el pago</option>
-  <option value="3">Urgente</option>
-</select>
-</div>
-
-        <div class="mb-3 text-center">
-            <label for="textarea" class="form-label"> Mensaje </label>
-            <textarea class="form-control w-50 mx-auto" id="textarea" rows="3"></textarea>
-        </div>
-
-        <!-- Botón modal contacto -->
-        <button type="button" class="btn btn-primary"  id="Enviarr">Enviar
-        </button>
-        </form>
-        
-</div>
-</div>
-
-<script>
-document.getElementById('Enviarr').addEventListener('click', function () {
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const mensaje = document.getElementById('textarea').value.trim();
-    let formularioValido = true;
-
-    // Limpiar errores anteriores
-    document.getElementById('error-email').textContent = "";
-
-    // Validar campos vacíos
-    if (nombre === '' || email === '' || mensaje === '') {
-        alert('Complete los campos vacíos');
-        formularioValido = false;
-    }
-
-    // Validar formato de email solo si el campo no está vacío
-    if (email !== '') {
-        const regexEmail = /^\S+@\S+\.\S+$/;
-        if (!regexEmail.test(email)) {
+    <script>
+        document.getElementById('Enviarr').addEventListener('click', function () {
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mensaje = document.getElementById('textarea').value.trim();
+        let formularioValido = true;
+        // Limpiar errores anteriores
+        document.getElementById('error-email').textContent = "";
+        // Validar campos vacíos
+        if (nombre === '' || email === '' || mensaje === '') {
+            alert('Complete los campos vacíos');
             formularioValido = false;
-            document.getElementById('error-email').textContent = "Formato de email no válido";
         }
-    }
-
-    // Si todo está bien, mostrar el modal (simulado)
-    if (formularioValido) {
-        // Asegurate de tener el modalContacto en tu HTML, o cambialo si se llama distinto
-        const modal = new bootstrap.Modal(document.getElementById('modalContacto'));
-        modal.show();
-    }
-});
-</script>
-
-        <!-- Modal Contacto -->
-        <div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content justify-content-center">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5 text-center w-100" id="modalContactoLabel">Mensaje enviado</h1>
-                        <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        </button>
-                    </div>
-                    <div class="modal-body text-center">
-                    Hemos recibido tu consulta, nos comunicaremos a la brevedad
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar
-                        </button>
-                    </div>
+        // Validar formato de email solo si el campo no está vacío
+        if (email !== '') {
+            const regexEmail = /^\S+@\S+\.\S+$/;
+            if (!regexEmail.test(email)) {
+                formularioValido = false;
+                document.getElementById('error-email').textContent = "Formato de email no válido";
+            }
+        }
+        // Si todo está bien, mostrar el modal (simulado)
+        if (formularioValido) {
+            // Asegurate de tener el modalContacto en tu HTML, o cambialo si se llama distinto
+            const modal = new bootstrap.Modal(document.getElementById('modalContacto'));
+            modal.show();
+            }
+        });
+    </script>
+    <!-- Modal Contacto -->
+    <div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content justify-content-center">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-center w-100" id="modalContactoLabel">Mensaje enviado</h1>
+                    <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                Hemos recibido tu consulta, nos comunicaremos a la brevedad
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar
+                    </button>
                 </div>
             </div>
         </div>
-        <!-- Footer -->
-        <footer class="bg-dark text-white text-center py-4 mt-5">
-            <div class="container">
-                <p class="mb-1">Instituto Superior del Milagro - informes@institutodelmilagro.com</p>
-                <p class="mb-1">Alvarado N°951 - Tel. (0387) 4311519 – 4312643 - Alvarado N°1164 - Tel. (0387) 4215400 – 2433270</p>
-                <img src="logo_pie.png" alt="logo" width="100">
-            </div>
-        </footer>
-        <!-- Script bootstrap -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-1">Instituto Superior del Milagro - informes@institutodelmilagro.com</p>
+            <p class="mb-1">Alvarado N°951 - Tel. (0387) 4311519 – 4312643 - Alvarado N°1164 - Tel. (0387) 4215400 – 2433270</p>
+            <img src="img/logo_pie.png" alt="logo" width="100">
+        </div>
+    </footer>
+    <!-- Script bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
