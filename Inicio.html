@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Encabezado -->
+    <!-- Encabezado con navbar-->
     <header>
         <nav id="navbar">
             <div class="navlista1">
@@ -35,7 +35,7 @@
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#modalCampus">Acceder
                         </button>
-                        <!-- Modal -->
+                        <!-- Modal Campus -->
                         <div class="modal fade" id="modalCampus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCampusLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -186,7 +186,7 @@
                     </div>
                 </div>
             </div>
-<!-- Contacto -->
+<!-- Formulario de Contacto -->
         <div class="form_de_contacto">
             <div class="mb-3 text-center" >
                 <hr>
@@ -202,7 +202,7 @@
                     </div>
                     <div class="mb-3 text-center">
                         <label class="form-label"> Telefono </label>
-                        <input type="text" class="form-control w-50 mx-auto"  >
+                        <input type="tel" id= "telefono" name="telefono" class="form-control w-50 mx-auto" placeholder="388-xxx-xxxx" required >
                     </div>
                     <div class="form-control w-50 mx-auto">
                         <select class="form-select" aria-label="Default select example" >
@@ -214,7 +214,7 @@
                     </div>
                     <div class="mb-3 text-center">
                         <label for="textarea" class="form-label"> Mensaje </label>
-                        <textarea class="form-control w-50 mx-auto" id="textarea" rows="3"></textarea>
+                        <textarea class="form-control w-50 mx-auto" id="textarea" rows="3" placeholder="Tu mensaje"></textarea>
                     </div>
                     <!-- Botón modal contacto -->
                     <button type="button" class="btn btn-primary"  id="Enviarr">Enviar
@@ -222,35 +222,41 @@
                 </form>
             </div>
         </div>
-    <script>
-        document.getElementById('Enviarr').addEventListener('click', function () {
-        const nombre = document.getElementById('nombre').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const mensaje = document.getElementById('textarea').value.trim();
-        let formularioValido = true;
-        // Limpiar errores anteriores
-        document.getElementById('error-email').textContent = "";
-        // Validar campos vacíos
-        if (nombre === '' || email === '' || mensaje === '') {
-            alert('Complete los campos vacíos');
-            formularioValido = false;
-        }
-        // Validar formato de email solo si el campo no está vacío
-        if (email !== '') {
-            const regexEmail = /^\S+@\S+\.\S+$/;
-            if (!regexEmail.test(email)) {
+        <!-- Script Validacion -->
+        <script>
+            document.getElementById('Enviarr').addEventListener('click', function () {
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensaje = document.getElementById('textarea').value.trim();
+            let formularioValido = true;
+            // Limpiar errores anteriores
+            document.getElementById('error-email').textContent = "";
+            // Validar campos vacíos
+            if (nombre === '' || email === '' || mensaje === '') {
+                alert('Complete los campos vacíos');
                 formularioValido = false;
-                document.getElementById('error-email').textContent = "Formato de email no válido";
             }
-        }
-        // Si todo está bien, mostrar el modal (simulado)
-        if (formularioValido) {
-            // Asegurate de tener el modalContacto en tu HTML, o cambialo si se llama distinto
-            const modal = new bootstrap.Modal(document.getElementById('modalContacto'));
-            modal.show();
+            // Validar formato de email con una expresion regular
+            // Verifica si lo ingresado cumple con un patron especifico
+            if (email !== '') {
+                const regexEmail = /^\S+@\S+\.\S+$/;
+                if (!regexEmail.test(email)) {
+                    formularioValido = false;
+                    document.getElementById('error-email').textContent = "Formato de email no válido";
+                }
             }
-        });
-    </script>
+            if (formularioValido) {
+                const modal = new bootstrap.Modal(document.getElementById('modalContacto'));
+                modal.show();
+                }
+            });
+            // Mascara de entrada para que solo se ingresen numeros
+            const telefono = document.getElementById('telefono');
+            telefono.addEventListener('input', () => {
+            // Reemplaza todo lo que no sea número
+            telefono.value = telefono.value.replace(/\D/g, '');
+            });
+        </script>
     <!-- Modal Contacto -->
     <div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
         <div class="modal-dialog">
